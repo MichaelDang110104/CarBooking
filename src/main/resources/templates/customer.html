@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<div th:replace="cssFiles.html :: cssFiles"></div>
+</head>
+
+<body>
+
+<div th:replace="AdminHeader.html :: navbar"></div>
+
+<section class="ftco-section ftco-cart">
+	<section class="intro">
+		<div class="gradient-custom-1 h-100">
+			<div class="mask d-flex align-items-center h-100">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12">
+							<h2>All customers</h2>
+							<h3 th:text="${notification}"></h3>
+
+							<div class="table-responsive bg-white">
+								<table class="table mb-0">
+									<thead>
+									<tr>
+										<th scope="col">Customer ID</th>
+										<th scope="col">Customer Name</th>
+										<th scope="col">Email</th>
+										<th scope="col">Identity Card</th>
+										<th scope="col">Mobile</th>
+										<th scope="col">Action</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr th:each="customer : ${customer}">
+										<th scope="row" style="color: #666666;" th:text="${customer.customerID}"></th>
+										<td th:text="${customer.customerName}"></td>
+										<td th:text="${customer.email}">tnixon12@example.com</td>
+										<td th:text="${customer.identityCard}"></td>
+										<td th:text="${customer.mobile}"></td>
+										<td>
+											<form th:action="@{/admin/customer}" method="post">
+												<input type="hidden" name="id" th:value="${customer.customerID}"/>
+												<button type="submit" class="btn btn-danger mt-3 mb-3">Delete customer</button>
+											</form>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</section>
+
+<div th:replace="Footer.html :: footer"></div>
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+	<svg class="circular" width="48px" height="48px">
+		<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+	</svg>
+</div>
+
+<div th:replace="jsFiles.html :: jsFiles"></div>
+
+</body>
+
+</html>

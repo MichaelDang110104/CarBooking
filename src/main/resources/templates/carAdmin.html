@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<div th:replace="cssFiles.html :: cssFiles"></div>
+</head>
+
+<body>
+
+<div th:replace="AdminHeader :: navbar "></div>
+
+<h3 th:text="${notification}"></h3>
+
+<section class="ftco-section ftco-cart">
+	<section class="intro">
+		<div class="gradient-custom-1 h-100">
+			<div class="mask d-flex align-items-center h-100">
+				<div class="container">
+
+					<div class="row justify-content-center">
+						<div class="col-12">
+							<h2>Car for rent</h2>
+							<a th:href="@{/admin/createCar}" class="btn btn-secondary mt-3 mb-3">Create new car</a>
+							<div class="table-responsive bg-white">
+								<table class="table mb-0">
+									<thead>
+									<tr>
+										<th scope="col">Car ID</th>
+										<th scope="col">Car Name</th>
+										<th scope="col">Category</th>
+										<th scope="col">Model Year</th>
+										<th scope="col">Capacity</th>
+										<th scope="col">Rent Price</th>
+										<th scope="col">Transmission</th>
+										<th scope="col">Status</th>
+										<th scope="col">Action</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr th:each="car : ${listCar}">
+										<th scope="row" style="color: #666666;" th:text="${car.carId}"></th>
+										<td th:text="${car.carName}"></td>
+										<td th:text="${car.categoryID.categoryName}"></td>
+										<td th:text="${car.carModelYear}"></td>
+										<td th:text="${car.capacity}"></td>
+										<td th:text="${car.rentPrice}"></td>
+										<td th:text="${car.transmission}"></td>
+										<td th:text="${car.status}"></td>
+										<td><a th:href="@{/admin/updateCar(id=${car.carId})}"  class="btn btn-secondary mt-3 mb-3">Update car</a>
+										<td>
+											<form th:action="@{/admin/carAdmin}" method="post">
+												<input type="hidden" name="id" th:value="${car.carId}"/>
+												<button type="submit" class="btn btn-danger mt-3 mb-3">Delete car</button>
+											</form>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</section>
+<div th:replace="Footer.html :: footer"></div>
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+	<svg class="circular" width="48px" height="48px">
+		<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+	</svg>
+</div>
+<div th:replace="jsFiles.html :: jsFiles"></div>
+
+</body>
+
+</html>
