@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "CAR_PRODUCERS")
+@Table(name = "CAR_PRODUCER")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -45,8 +45,7 @@ public class CarProducer {
     @Size(max = 100, message = "Country should not exceed 100 characters")
     private String country;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ProducerID")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "producer")
     private Set<Car> car = new HashSet<Car>();
 
 }

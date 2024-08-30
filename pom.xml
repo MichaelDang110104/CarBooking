@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>HSF301_Assignment_Spring_MVC</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>HSF301_Assignment_Spring_MVC</name>
 	<description>HSF Assignment</description>
 	<url/>
@@ -132,6 +132,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>CarBooking</finalName>
 	</build>
 
 </project>

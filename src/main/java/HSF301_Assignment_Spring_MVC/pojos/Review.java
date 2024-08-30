@@ -1,12 +1,6 @@
 package HSF301_Assignment_Spring_MVC.pojos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
@@ -23,10 +17,12 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("customerId")
+    @JoinColumn(name = "CustomerID")
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("carId")
+    @JoinColumn(name = "CarID")
     private Car car;
 
     @Column(name = "ReviewStar", nullable = false)
